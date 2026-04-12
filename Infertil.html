@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>🥚 Telur Infertil · Iklan & Panduan</title>
+  <!-- Font & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #f3ede8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 16px;
+    }
+    .app-wrapper {
+      max-width: 1200px;
+      width: 100%;
+      background: transparent;
+      border-radius: 48px;
+    }
+
+    /* ===== TABS NAVIGATION (kecil, tidak mengganggu) ===== */
+    .tabs-mini {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .tab-mini-btn {
+      background: rgba(255,255,240,0.8);
+      backdrop-filter: blur(8px);
+      border: 1px solid #eccc9e;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #5a3e2a;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tab-mini-btn i { font-size: 0.9rem; }
+    .tab-mini-btn.active {
+      background: #b45f2b;
+      color: white;
+      border-color: #7c3e1a;
+      box-shadow: 0 6px 10px rgba(180,95,43,0.2);
+    }
+    .tab-mini-btn:hover:not(.active) {
+      background: #fadbb5;
+      border-color: #b45f2b;
+    }
+
+    /* ===== KONTEN UTAMA (berganti sesuai tab) ===== */
+    .main-content {
+      background: #fffaf2;
+      border-radius: 48px;
+      box-shadow: 0 30px 45px -10px rgba(90, 45, 15, 0.25);
+      overflow: hidden;
+      border: 1px solid #ffdbb5;
+    }
+
+    /* Home (Iklan) – landscape */
+    .iklan-landscape {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    .iklan-left {
+      flex: 1.2;
+      min-width: 300px;
+      background: linear-gradient(145deg, #d9792b, #b45f2b);
+      padding: 32px 28px;
+      color: white;
+    }
+    .iklan-left h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .iklan-left h2 i {
+      background: rgba(255,255,255,0.2);
+      padding: 12px;
+      border-radius: 50%;
+      margin-right: 12px;
+    }
+    .po-badge {
+      background: #ffd966;
+      color: #4e2e14;
+      font-weight: 800;
+      padding: 10px 20px;
+      border-radius: 40px;
+      display: inline-block;
+      margin: 20px 0 16px;
+      font-size: 1.2rem;
+      box-shadow: 0 6px 0 #b47d2b;
+    }
+    .delivery-info {
+      background: rgba(255,255,240,0.15);
+      backdrop-filter: blur(8px);
+      padding: 18px 20px;
+      border-radius: 30px;
+      margin-top: 10px;
+      border: 1px solid #ffcf9a;
+    }
+    .price-tag {
+      display: flex;
+      gap: 20px;
+      margin: 24px 0 8px;
+    }
+    .price-item {
+      background: white;
+      color: #3d2b1a;
+      padding: 14px 20px;
+      border-radius: 28px;
+      text-align: center;
+      flex: 1;
+      box-shadow: 0 10px 0 #8f4b1c;
+    }
+    .price-item .price-value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #b45f2b;
+    }
+    .iklan-right {
+      flex: 1;
+      min-width: 280px;
+      padding: 32px 30px;
+      background: #ffffff;
+    }
+    .area-highlight {
+      background: #eef7e9;
+      border-radius: 32px;
+      padding: 22px 20px;
+      margin-bottom: 24px;
+      border-left: 12px solid #2ecc71;
+    }
+    .btn-contact {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: #25D366;
+      color: white;
+      padding: 18px 16px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      text-decoration: none;
+      box-shadow: 0 8px 0 #1b9e4b;
+      margin-bottom: 16px;
+    }
+    .btn-contact.secondary {
+      background: #075e54;
+      box-shadow: 0 8px 0 #043b36;
+    }
+    .note-preorder {
+      background: #fef1e0;
+      padding: 16px 20px;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #6d3f1c;
+      margin-top: 10px;
+    }
+
+    /* Style untuk konten panduan (tab lain) */
+    .panduan-content {
+      padding: 32px 36px;
+      max-height: 700px;
+      overflow-y: auto;
+    }
+    .panduan-content h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #3b281c;
+      margin-bottom: 24px;
+      border-left: 10px solid #e67e22;
+      padding-left: 20px;
+    }
+    .guide-section {
+      margin-bottom: 32px;
+    }
+    .guide-section h4 {
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #562c0e;
+    }
+    .formula-mini-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fdf6ec;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .formula-mini-table th {
+      background: #b45f2b;
+      color: white;
+      padding: 12px;
+    }
+    .formula-mini-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #ebd3b8;
+    }
+
+    @media (max-width: 750px) {
+      .iklan-landscape { flex-direction: column; }
+      .panduan-content { padding: 24px 20px; }
+    }
+
+    /* Utilitas */
+    .hidden-tab { display: none !important; }
+  </style>
+</head>
+<body>
+<div class="app-wrapper">
+  <!-- Tabs mini di atas -->
+  <div class="tabs-mini">
+    <div class="tab-mini-btn active" data-tab="home"><i class="fas fa-home"></i> Iklan</div>
+    <div class="tab-mini-btn" data-tab="panduan"><i class="fas fa-book-open"></i> Panduan Lengkap</div>
+    <div class="tab-mini-btn" data-tab="formula"><i class="fas fa-flask"></i> Formula Pakan</div>
+    <div class="tab-mini-btn" data-tab="faq"><i class="fas fa-question-circle"></i> FAQ</div>
+  </div>
+
+  <!-- Main content container -->
+  <div class="main-content">
+    <!-- HOME / IKLAN -->
+    <div id="tab-home" class="iklan-landscape">
+      <div class="iklan-left">
+        <h2><i class="fas fa-egg"></i> TELUR INFERTIL<br>REBUS MATANG</h2>
+        <div style="font-size: 1.3rem; font-weight: 500; margin-bottom: 8px;"><i class="fas fa-fire"></i> Siap Campur Pakan · Higienis</div>
+        <div class="po-badge"><i class="fas fa-calendar-check"></i> PRE-ORDER 3 HARI</div>
+        <p style="margin-bottom: 6px; font-weight: 500;"><i class="fas fa-check-circle"></i> Diproses setelah PO. Ambil sendiri GRATIS.</p>
+        <div class="price-tag">
+          <div class="price-item"><div><i class="fas fa-egg"></i> Telur Infertil</div><div class="price-value">Rp5.000</div><small>/paket (±10 butir)</small></div>
+          <div class="price-item"><div><i class="fas fa-blender"></i> +Cangkang Telur</div><div class="price-value">Rp4.000</div><small>/paket hemat</small></div>
+        </div>
+        <div class="delivery-info">
+          <p><i class="fas fa-truck" style="font-size: 1.8rem;"></i> <span><strong>Minta diantar?</strong> Ongkir ditanggung pembeli (nego). Ambil sendiri = GRATIS.</span></p>
+        </div>
+      </div>
+      <div class="iklan-right">
+        <div class="area-highlight">
+          <div style="display: flex; align-items: center; gap: 12px;"><i class="fas fa-map-pin"></i><span style="font-weight: 700; font-size: 1.3rem;">COD & Ambil Sendiri</span></div>
+          <p style="margin-top: 12px; font-size: 1.1rem;">Banjarbaru · Banjarmasin · Martapura · Kalsel sekitar</p>
+        </div>
+        <a href="https://wa.me/6283843624790" target="_blank" class="btn-contact"><i class="fab fa-whatsapp"></i> 0838-4362-4790 (WA)</a>
+        <a href="https://wa.me/6285705452389" target="_blank" class="btn-contact secondary"><i class="fab fa-whatsapp"></i> 0857-0545-2389 (WA)</a>
+        <div class="note-preorder"><i class="fas fa-hand-holding-heart"></i> <strong>Pre‑Order 3 hari</strong><br>✅ Ongkir antar kesepakatan<br>✅ Ambil sendiri GRATIS</div>
+      </div>
+    </div>
+
+    <!-- PANDUAN LENGKAP -->
+    <div id="tab-panduan" class="panduan-content hidden-tab">
+      <h3><i class="fas fa-info-circle"></i> Mengenal Telur Infertil</h3>
+      <div class="guide-section">
+        <h4>🥚 Apa itu Telur Infertil?</h4>
+        <p>Telur infertil adalah telur yang tidak dibuahi dan gagal menetas dalam proses penetasan. Kandungan protein, lemak, vitamin, dan mineralnya setara telur biasa. Harga sangat ekonomis (30 butir ≈ Rp10.000) karena dianggap limbah penetasan.</p>
+      </div>
+      <div class="guide-section">
+        <h4>✅ Keunggulan sebagai Pakan Ternak</h4>
+        <ul style="margin-left: 20px; line-height: 1.8;">
+          <li><strong>Hemat biaya pakan</strong> – menggantikan protein mahal seperti tepung ikan.</li>
+          <li><strong>Meningkatkan bobot & karkas</strong> – penelitian: 9,9% dalam ransum ayam kampung super naikkan bobot potong.</li>
+          <li><strong>Mudah diolah</strong> – cukup rebus, haluskan, campurkan.</li>
+          <li><strong>Ramah lingkungan</strong> – mengurangi limbah penetasan.</li>
+        </ul>
+      </div>
+      <div class="guide-section">
+        <h4>⚠️ Hal Penting Diperhatikan</h4>
+        <ul style="margin-left: 20px;">
+          <li>Gunakan telur infertil segar (maks inkubasi 4 hari).</li>
+          <li>Rebus hingga matang untuk membunuh Salmonella.</li>
+          <li>Jangan berikan pada unggas petelur (risiko kegemukan).</li>
+          <li>Dosis aman: 4–10% dari total ransum.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- FORMULA PAKAN DETAIL -->
+    <div id="tab-formula" class="panduan-content hidden-tab">
+      <h3><i class="fas fa-calculator"></i> Formula Campuran Pakan per Jenis Ternak</h3>
+      <div class="guide-section">
+        <h4>🐔 Ayam Broiler</h4>
+        <table class="formula-mini-table">
+          <tr><th>Bahan</th><th>Persentase</th></tr>
+          <tr><td>Jagung giling</td><td>50%</td></tr>
+          <tr><td>Dedak padi</td><td>10%</td></tr>
+          <tr><td>Tepung kedelai</td><td>22%</td></tr>
+          <tr><td>Tepung ikan</td><td>6%</td></tr>
+          <tr><td><strong>Telur infertil rebus</strong></td><td><strong>6%</strong></td></tr>
+          <tr><td>Mineral mix</td><td>2%</td></tr>
+        </table>
+      </div>
+      <div class="guide-section">
+        <h4>🐓 Ayam Kampung Super</h4>
+        <table class="formula-mini-table">
+          <tr><th>Bahan</th><th>Persentase</th></tr>
+          <tr><td>Jagung kuning</td><td>45%</td></tr>
+          <tr><td>Dedak padi</td><td>20%</td></tr>
+          <tr><td>Bungkil kedelai</td><td>18%</td></tr>
+          <tr><td><strong>Telur infertil</strong></td><td><strong>9%</strong></td></tr>
+          <tr><td>Tepung cangkang telur</td><td>2%</td></tr>
+          <tr><td>Premix</td><td>2%</td></tr>
+        </table>
+      </div>
+      <div class="guide-section">
+        <h4>🐟 Ikan Lele / Nila</h4>
+        <table class="formula-mini-table">
+          <tr><th>Bahan</th><th>Komposisi</th></tr>
+          <tr><td>Telur infertil rebus</td><td>15%</td></tr>
+          <tr><td>Tepung ikan</td><td>20%</td></tr>
+          <tr><td>Dedak halus</td><td>25%</td></tr>
+          <tr><td>Tepung kedelai</td><td>15%</td></tr>
+          <tr><td>Tepung jagung</td><td>10%</td></tr>
+          <tr><td>Tapioka</td><td>5%</td></tr>
+        </table>
+      </div>
+      <p style="margin-top: 20px;">📌 Untuk sapi/kambing: cukup 2-4 butir mentah/hari dicampur konsentrat.</p>
+    </div>
+
+    <!-- FAQ -->
+    <div id="tab-faq" class="panduan-content hidden-tab">
+      <h3><i class="fas fa-question-circle"></i> Pertanyaan Umum</h3>
+      <div class="guide-section">
+        <h4>❓ Apakah telur infertil aman untuk ternak?</h4>
+        <p>Sangat aman asalkan direbus matang dan berasal dari sumber terpercaya. Rebus membunuh bakteri patogen.</p>
+      </div>
+      <div class="guide-section">
+        <h4>❓ Bisakah diberikan dalam keadaan mentah?</h4>
+        <p>Untuk unggas dan ikan sebaiknya direbus. Untuk sapi/domba bisa mentah (sistem pencernaan berbeda).</p>
+      </div>
+      <div class="guide-section">
+        <h4>❓ Berapa dosis maksimal yang disarankan?</h4>
+        <p>Penelitian menunjukkan optimal 4–10%. Diatas 10% tidak efisien dan berisiko obesitas.</p>
+      </div>
+      <div class="guide-section">
+        <h4>❓ Bagaimana cara penyimpanan telur infertil?</h4>
+        <p>Simpan di tempat sejuk, atau olah menjadi tepung (TLP) agar tahan lama.</p>
+      </div>
+      <div class="guide-section">
+        <h4>❓ Apakah bisa untuk ayam petelur?</h4>
+        <p>Tidak disarankan karena lemak tinggi bisa menurunkan produksi telur.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const tabBtns = document.querySelectorAll('.tab-mini-btn');
+    const homeEl = document.getElementById('tab-home');
+    const panduanEl = document.getElementById('tab-panduan');
+    const formulaEl = document.getElementById('tab-formula');
+    const faqEl = document.getElementById('tab-faq');
+    
+    const allContents = [homeEl, panduanEl, formulaEl, faqEl];
+
+    function switchTab(tabId) {
+      // Sembunyikan semua konten
+      allContents.forEach(el => el.classList.add('hidden-tab'));
+      // Tampilkan konten yang dipilih
+      if (tabId === 'home') homeEl.classList.remove('hidden-tab');
+      else if (tabId === 'panduan') panduanEl.classList.remove('hidden-tab');
+      else if (tabId === 'formula') formulaEl.classList.remove('hidden-tab');
+      else if (tabId === 'faq') faqEl.classList.remove('hidden-tab');
+
+      // Update active button
+      tabBtns.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.tab === tabId) btn.classList.add('active');
+      });
+    }
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tabId = btn.dataset.tab;
+        if (tabId) switchTab(tabId);
+      });
+    });
+
+    // Default: home
+    switchTab('home');
+  })();
+</script>
+</body>
+  </html>
