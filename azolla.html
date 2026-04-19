@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZOLLA MASTERGUIDE: Cara Olah & Tips Lengkap Per Ternak</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #e7f3de;
+            padding: 30px 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .master-container {
+            max-width: 1300px;
+            width: 100%;
+            background: #fffffffa;
+            backdrop-filter: blur(2px);
+            border-radius: 56px 56px 48px 48px;
+            box-shadow: 0 30px 45px rgba(0, 40, 0, 0.2);
+            padding: 30px 30px 40px 30px;
+            border: 1px solid #bcddb4;
+        }
+
+        /* header */
+        .hero {
+            background: linear-gradient(125deg, #d1f0c1 0%, #b2e0a2 100%);
+            border-radius: 42px;
+            padding: 30px 40px;
+            margin-bottom: 35px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            border: 2px solid #90bc90;
+        }
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #1d4f1d;
+            line-height: 1.2;
+        }
+        .hero .sub {
+            font-size: 1.4rem;
+            background: #2a6b2a;
+            color: white;
+            padding: 8px 25px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        .hero-right {
+            background: #fefefecc;
+            backdrop-filter: blur(10px);
+            padding: 20px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            color: #1b4f1b;
+            border: 2px dashed #5f9f5f;
+        }
+
+        /* TABS */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 40px 0 20px;
+            justify-content: center;
+        }
+        .tab-btn {
+            background: #d4ead4;
+            border: 2px solid #85b585;
+            padding: 12px 24px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #1f4a1f;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px rgba(0,20,0,0.05);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tab-btn.active {
+            background: #2b792b;
+            border-color: #1b551b;
+            color: white;
+            box-shadow: 0 8px 14px rgba(35,100,35,0.3);
+            transform: scale(1.02);
+        }
+        .tab-btn i {
+            font-size: 1.3rem;
+        }
+
+        /* tab content */
+        .tab-pane {
+            display: none;
+            background: #f9fff9;
+            border-radius: 48px;
+            padding: 35px;
+            border: 1px solid #b0d6b0;
+            box-shadow: inset 0 0 0 2px white, 0 10px 20px rgba(0,30,0,0.1);
+            margin-top: 20px;
+        }
+        .tab-pane.active {
+            display: block;
+        }
+
+        /* hewan header */
+        .animal-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            background: #e2f2dc;
+            padding: 18px 30px;
+            border-radius: 80px;
+        }
+        .animal-icon {
+            font-size: 3.5rem;
+        }
+        .animal-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #204e20;
+        }
+
+        /* grid dalam tab */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        .info-card {
+            background: #f0faeec0;
+            border-radius: 32px;
+            padding: 25px;
+            border: 2px solid #b8ddb8;
+            box-shadow: 0 6px 12px rgba(0,20,0,0.03);
+        }
+        .info-card h3 {
+            font-size: 1.8rem;
+            color: #216321;
+            margin-bottom: 18px;
+            border-bottom: 3px dotted #a0c8a0;
+            padding-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .step-list {
+            list-style: none;
+        }
+        .step-list li {
+            margin-bottom: 15px;
+            padding-left: 32px;
+            position: relative;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+        .step-list li::before {
+            content: "🌱";
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.3rem;
+        }
+        .dosage-badge {
+            background: #3b8f3b;
+            color: white;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 30px;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        .tip-bubble {
+            background: #fff4d2;
+            border-radius: 24px;
+            padding: 18px;
+            margin-top: 20px;
+            border-left: 8px solid #f0a64a;
+            font-size: 1rem;
+        }
+        .full-width {
+            grid-column: span 2;
+        }
+        .sell-note {
+            background: #d6ecd6;
+            border-radius: 28px;
+            padding: 20px;
+            font-weight: 500;
+            border: 3px solid #569f56;
+            margin-top: 30px;
+        }
+        hr {
+            border: 2px solid #b0d8b0;
+            margin: 30px 0;
+        }
+
+        /* tabel perbandingan */
+        .quick-compare {
+            background: white;
+            border-radius: 32px;
+            padding: 25px;
+            border: 2px solid #a0cf9c;
+            margin-top: 50px;
+        }
+        .quick-compare h2 {
+            color: #215f21;
+            margin-bottom: 20px;
+        }
+        .mini-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .mini-table th {
+            background: #488348;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        .mini-table td {
+            padding: 12px;
+            border-bottom: 1px solid #c8e2c8;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #2b6e2b;
+            font-size: 1.2rem;
+            padding: 25px;
+        }
+    </style>
+</head>
+<body>
+<div class="master-container">
+    <div class="hero">
+        <div>
+            <h1>🌿 AZOLLA <span style="font-weight:400;">microphylla</span></h1>
+            <div class="sub">GUIDE SUPER LENGKAP · 10+ HEWAN</div>
+            <p style="font-size:1.2rem; margin-top:15px; max-width:600px;">✧ khusus untuk anda yang ingin menjual azolla, setiap tab berisi cara olah, takaran, tips khusus, dan trik agar pembeli sukses ✧</p>
+        </div>
+        <div class="hero-right">
+            🧑‍🌾 <strong>UNTUK PENJUAL:</strong> salin, cetak, atau bagikan ke pelanggan anda.
+        </div>
+    </div>
+
+    <!-- TABS navigation -->
+    <div class="tabs" id="tabHeaders">
+        <div class="tab-btn active" data-tab="maggot">🐛 MAGGOT</div>
+        <div class="tab-btn" data-tab="ikan">🐟 IKAN</div>
+        <div class="tab-btn" data-tab="udang">🦐 UDANG</div>
+        <div class="tab-btn" data-tab="ayam">🐓 AYAM</div>
+        <div class="tab-btn" data-tab="bebek">🦆 BEBEK</div>
+        <div class="tab-btn" data-tab="puyuh">🐣 PUYUH</div>
+        <div class="tab-btn" data-tab="babi">🐷 BABI</div>
+        <div class="tab-btn" data-tab="kambing">🐐 KAMBING/DOMBA</div>
+        <div class="tab-btn" data-tab="kelinci">🐇 KELINCI</div>
+        <div class="tab-btn" data-tab="stok">📦 PENYIMPANAN</div>
+    </div>
+
+    <!-- ========== TAB MAGGOT ========= -->
+    <div id="tab-maggot" class="tab-pane active">
+        <div class="animal-header"><span class="animal-icon">🐛</span><span class="animal-title">Maggot BSF (larva Black Soldier Fly)</span></div>
+        <div class="detail-grid">
+            <div class="info-card">
+                <h3>🌿 Cara Olah Azolla untuk Maggot</h3>
+                <ul class="step-list">
+                    <li><strong>Segar cincang halus</strong> – azolla dipanen, cuci bersih, tiriskan, lalu cacah ukuran 0,5–1 cm. Campur rata ke dalam media pakan (ampas tahu, dedak, sampah sayur).</li>
+                    <li><strong>Bubur azolla</strong> – blender dengan sedikit air hingga seperti bubur. Siramkan di atas media untuk maggot kecil (umur 3-7 hari).</li>
+                    <li><strong>Fermentasi 3 hari</strong> – campur azolla + dedak + EM4/molase (perbandingan 10:1:0,1). Simpan dalam wadah tertutup. Hasilnya lebih lunak dan protein terurai, maggot lebih cepat besar.</li>
+                    <li><strong>Tepung azolla</strong> – jemur hingga kering (2-3 hari), giling halus. Taburkan sebagai suplemen atau campur adonan pakan buatan.</li>
+                </ul>
+                <div><span class="dosage-badge">⚖️ Takaran campuran: 20–50% dari total pakan</span></div>
+            </div>
+            <div class="info-card">
+                <h3>💡 Tips Khusus Maggot</h3>
+                <ul style="margin-left:20px; line-height:1.7;">
+                    <li>🔹 Jika pakai azolla segar, kurangi sedikit air pada campuran pakan (karena azolla sudah mengandung air tinggi).</li>
+                    <li>🔹 Maggot umur di atas 10 hari lebih suka azolla yang dicacah kasar.</li>
+                    <li>🔹 Fermentasi azolla meningkatkan populasi probiotik, mengurangi bau media.</li>
+                    <li>🔹 Berikan secara konsisten, nafsu makan maggot meningkat drastis.</li>
+                </ul>
+                <div class="tip-bubble">
+                    ✨ Rahasia penjual: Sarankan pembeli untuk mencampur azolla fermentasi 30% + ampas tahu 70% → maggot panen 3 hari lebih cepat.
+                </div>
+            </div>
+            <div class="full-width info-card" style="margin-top:10px;">
+                <h3>📊 Detail manfaat untuk maggot</h3>
+                <p>✔ Protein tambahan mempercepat pertumbuhan hingga 20% <br> ✔ Azolla segar mengandung zat anti-stres alami <br> ✔ Membuat media lebih gembur dan tidak cepat kering <br> ✔ Maggot yang diberi azolla dagingnya lebih padat (harga jual lebih tinggi).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== TAB IKAN ========= -->
+    <div id="tab-ikan" class="tab-pane">
+        <div class="animal-header"><span class="animal-icon">🐟</span><span class="animal-title">Ikan konsumsi (lele, nila, gurame, mas, patin)</span></div>
+        <div class="detail-grid">
+            <div class="info-card"><h3>🌿 Pengolahan</h3><ul class="step-list"><li>Segar cacah sesuai bukaan mulut ikan. Untuk benih ukuran 3-5 cm, azolla harus dicacah halus seperti pasta. Ikan dewasa bisa diberi utuh atau diremas.</li><li>Campur pelet: aduk azolla segar + pelet (1:1) lalu berikan.</li><li>Silase azolla: fermentasi 5 hari, campur dedak, bentuk adonan apung.</li></ul><span class="dosage-badge">Takaran: 20-50% pakan harian (nila bisa 80%)</span></div>
+            <div class="info-card"><h3>💡 Tips Ikan</h3><ul><li>🔸 Lele lebih suka azolla dicampur pelet apung.</li><li>🔸 Gurame suka azolla utuh mengapung.</li><li>🔸 Azolla membantu menyerap amonia di kolam.</li></ul><div class="tip-bubble">🎣 Ikan nila yang diberi azolla dagingnya lebih putih dan padat.</div></div>
+        </div>
+    </div>
+
+    <!-- ========== TAB UDANG ========= -->
+    <div id="tab-udang" class="tab-pane">
+        <div class="animal-header"><span class="animal-icon">🦐</span><span class="animal-title">Udang (vaname, windu, kepiting)</span></div>
+        <div class="detail-grid">
+            <div class="info-card"><h3>🌿 Olahan Udang</h3><ul class="step-list"><li>Segar cincang (ukuran 0,5-1cm).</li><li>Fermentasi dengan molase 2% selama 3 hari (lebih mudah dicerna).</li><li>Tepung halus campur pelet.</li></ul><span class="dosage-badge">15-30% campuran pakan</span></div>
+            <div class="info-card"><h3>🦐 Tips Udang</h3><ul><li>Jangan berlebihan, serat tinggi bisa mengganggu pencernaan.</li><li>Kombinasi dengan pelet 30% protein.</li><li>Azolla segar membantu menjaga kecerahan warna udang.</li></ul></div>
+        </div>
+    </div>
+
+    <!-- ========== TAB AYAM ========= -->
+    <div id="tab-ayam" class="tab-pane">
+        <div class="animal-header"><span class="animal-icon">🐓</span><span class="animal-title">Ayam (broiler, petelur, kampung)</span></div>
+        <div class="detail-grid">
+            <div class="info-card"><h3>🌿 Cara Olah Ayam</h3><ul class="step-list"><li>Segar cacah kasar campur dedak atau konsentrat.</li><li>Fermentasi azolla + dedak (3 hari) untuk ayam petelur.</li><li>Tepung azolla campur ransum (bisa sampai 15%).</li></ul><span class="dosage-badge">Ayam dewasa: 10-30% ransum. Petelur: 15% optimal.</span></div>
+            <div class="info-card"><h3>🐔 Tips Ayam</h3><ul><li>Awali dari 5% naik bertahap.</li><li>Ayam petelur: azolla bikin kuning telur oranye.</li><li>Bisa diberikan langsung sebagai sayur segar di kandang.</li></ul></div>
+        </div>
+    </div>
+
+    <!-- ========== TAB BEBEK ========= -->
+    <div id="tab-bebek" class="tab-pane">
+        <div class="animal-header"><span class="animal-icon">🦆</span><span class="animal-title">Bebek / itik</span></div>
+        <div class="detail-grid">
+            <div class="info-card"><h3>🌿 Olahan Bebek</h3><ul class="step-list"><li>Segar: tebar langsung di kolam atau tempat pakan.</li><li>Fermentasi (sama seperti ayam).</li><li>Campur nasi aking / dedak.</li></ul><span class="dosage-badge">20-40% pakan harian</span></div>
+            <div class="info-card"><h3>🦆 Tips Bebek</h3><ul><li>Bebek sangat suka azolla basah.</li><li>Menghemat konsentrat hingga 30%.</li><li>Telur bebek lebih besar dan aroma amis berkurang.</li></ul></div>
+        </div>
+    </div>
+
+    <!-- ========== TAB PUYUH ========= -->
+    <div id="tab-puyuh" class="tab-pane">
+        <div class="animal-header"><span class="animal-icon">🐣</span><span class="animal-title">Puyuh</span></div>
+        <div class="detail-grid">
+            <div class="info-card"><h3>🌿 Olahan Puyuh</h3><ul class="step-list"><li>Fermentasi halus (blender + fermentasi) agar mudah dicerna.</li><li>Tepung azolla campur puyuh starter.</li></ul><span class="dosage-badge">5-15% ransum</span></div>
+            <div class="info-card"><h3>💡 Tips Puyuh</h3><ul><li>Puyuh sensitif serat, jangan berlebihan.</li><li>Bisa diberikan dalam bentuk pasta fermentasi.</li></ul></div>
+        </div>
+    </div>
+
+    <!-- ========== TAB BABI ========= -->
+    <div id="tab-babi" class="tab-pane">
+        <div class="animal-header"><span class="animal-icon">🐷</span><span class="animal-title">Babi</span></div>
+        <div class="detail-grid">
+            <div class="info-card"><h3>🌿 Olahan Babi</h3><ul class="step-list"><li>Segar cincang kasar campur konsentrat.</li><li>Silase azolla + dedak + onggok (fermentasi 7 hari) tahan lama.</li></ul><span class="dosage-badge">15-30% ransum (bisa hingga 40% untuk babi lepas sapih)</span></div>
+            <div class="info-card"><h3>🐷 Tips Babi</h3><ul><li>Babi sangat menyukai rasa manis azolla fermentasi.</li><li>Mengurangi bau kandang.</li><li>Babi tumbuh lebih cepat dengan campuran azolla.</li></ul></div>
+        </div>
+    </div>
+
+    <!-- ========== TAB KAMBING ========= -->
+    <div id="tab-kambing" class="tab-pane">
+        <div class="animal-header"><span class="animal-icon">🐐</span><span class="animal-title">Kambing / Domba</span></div>
+        <div class="detail-grid">
+            <div class="info-card"><h3>🌿 Olahan Kambing</h3><ul class="step-list"><li>Segar langsung (tiriskan, layukan sebentar).</li><li>Campur konsentrat atau sebagai hijauan tambahan.</li></ul><span class="dosage-badge">1-2 kg/ekor/hari (dewasa)</span></div>
+            <div class="info-card"><h3>🐐 Tips Kambing</h3><ul><li>Jangan berikan terlalu basah (bisa kembung).</li><li>Ideal untuk induk menyusui dan cempe.</li><li>Meningkatkan nafsu makan.</li></ul></div>
+        </div>
+    </div>
+
+    <!-- ========== TAB KELINCI ========= -->
+    <div id="tab-kelinci" class="tab-pane">
+        <div class="animal-header"><span class="animal-icon">🐇</span><span class="animal-title">Kelinci</span></div>
+        <div class="detail-grid">
+            <div class="info-card"><h3>🌿 Olahan Kelinci</h3><ul class="step-list"><li>Segar cuci bersih, tiriskan, berikan utuh atau potong.</li><li>Bisa dijemur setengah kering sebagai camilan.</li></ul><span class="dosage-badge">1-2 genggam/ekor/hari</span></div>
+            <div class="info-card"><h3>🐇 Tips Kelinci</h3><ul><li>Kelinci sangat suka azolla, cocok untuk tambahan protein.</li><li>Pastikan tidak berlebihan agar tidak diare.</li></ul></div>
+        </div>
+    </div>
+
+    <!-- ========== TAB PENYIMPANAN / STOK ========= -->
+    <div id="tab-stok" class="tab-pane">
+        <div class="animal-header"><span class="animal-icon">📦</span><span class="animal-title">Penyimpanan & Stok Azolla (untuk dijual / stok lama)</span></div>
+        <div class="detail-grid">
+            <div class="info-card full-width">
+                <h3>🌿 Cara menyimpan azolla agar tahan lama (penting untuk penjual!)</h3>
+                <ul class="step-list" style="columns:2; column-gap:40px;">
+                    <li><strong>Kering angin:</strong> jemur di atas paranet 1-2 hari (tidak langsung matahari terik) hingga kadar air 40%, simpan dalam karung goni tahan 1 minggu.</li>
+                    <li><strong>Tepung azolla:</strong> jemur hingga benar-benar kering (4-5 hari), giling halus, simpan dalam toples kedap udara. Tahan 6 bulan.</li>
+                    <li><strong>Fermentasi basah (silase):</strong> campur azolla + dedak + molase, padatkan dalam jerigen kedap udara, simpan di tempat sejuk. Tahan 2-3 minggu.</li>
+                    <li><strong>Bekukan (freezer):</strong> azolla segar dalam plastik zip, bisa tahan 1 bulan untuk pakan ikan/udang.</li>
+                    <li><strong>Pelet azolla:</strong> campur tepung azolla + tapioka + air, cetak, jemur. Tahan lama dan praktis.</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h3>💰 Tips Menjual Azolla</h3>
+                <ul style="line-height:1.8;">
+                    <li>🌿 Jual dalam kemasan segar (per 500gr / 1kg) dengan label "cuci sebelum diberi".</li>
+                    <li>🌿 Tawarkan sampel fermentasi gratis untuk pembeli pertama.</li>
+                    <li>🌿 Buat paket bundling: azolla segar + panduan olah per hewan (dari halaman ini).</li>
+                    <li>🌿 Informasikan daya simpan: segar tahan 2-3 hari di kulkas, kering tahan berbulan-bulan.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabel ringkas -->
+    <div class="quick-compare">
+        <h2>📋 Tabel rekomendasi cepat (untuk ditempel di tempat jualan)</h2>
+        <table class="mini-table">
+            <tr><th>Hewan</th><th>Bentuk terbaik</th><th>Takaran</th><th>Manfaat jual</th></tr>
+            <tr><td>Maggot</td><td>Fermentasi / segar cincang</td><td>20-50%</td><td>Panen lebih cepat, gemuk</td></tr>
+            <tr><td>Ikan</td><td>Segar cacah</td><td>20-50%</td><td>Daging putih, air kolam sehat</td></tr>
+            <tr><td>Udang</td><td>Silase / tepung</td><td>15-30%</td><td>Warna cerah, tahan penyakit</td></tr>
+            <tr><td>Ayam</td><td>Fermentasi / tepung</td><td>10-30%</td><td>Kuning telur oranye</td></tr>
+            <tr><td>Bebek</td><td>Segar / fermentasi</td><td>20-40%</td><td>Hemat konsentrat</td></tr>
+            <tr><td>Babi</td><td>Silase</td><td>15-30%</td><td>Bau kandang berkurang</td></tr>
+            <tr><td>Kambing</td><td>Segar layu</td><td>1-2 kg/ekor</td><td>Suplemen protein murah</td></tr>
+            <tr><td>Kelinci</td><td>Segar</td><td>1-2 genggam</td><td>Pertumbuhan maksimal</td></tr>
+        </table>
+    </div>
+
+    <!-- footer penjual -->
+    <div class="footer-note">
+        🌟 Bagikan tab ini ke setiap pelanggan sesuai hewan peliharaannya. <br> Dengan panduan detail, mereka akan sukses dan kembali membeli azolla dari anda!
+    </div>
+</div>
+
+<!-- simple tab switching -->
+<script>
+    const tabs = document.querySelectorAll('.tab-btn');
+    const panes = document.querySelectorAll('.tab-pane');
+    tabs.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-tab');
+            tabs.forEach(b => b.classList.remove('active'));
+            panes.forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('tab-'+target).classList.add('active');
+        });
+    });
+</script>
+</body>
+</html>
